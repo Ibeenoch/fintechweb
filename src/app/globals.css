@@ -1,26 +1,165 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+      /* // darkerblack #060606 lighterblack #141414 green #b0f127   */
+
+  --background: #060606;
+  --lighterblack: #141414;
+  --greencolor: #b0f127;
+  --graybg: #939393;
+  --graytext: #c0c0c0;
 }
 
-@theme inline {
+ @theme {
+  --color-brand: var(--greencolor);
+  --color-lighterblack: var(--lighterblack);
+  --color-background: var(--background);
+  --color-greybg: var(--graybg);
+  --color-greytext: var(--graytext);
+} 
+
+/* @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--lighterblack);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.hamburger-menu{
+  position: relative;
+  cursor: pointer;
+user-select: none;
+outline: none;
+z-index: 10;
+}
+.hamburger-menu .line {
+position: absolute;
+border-radius: 9px;
+background-color: var(--greencolor);
+}
+
+.hamburger-menu .line-one {
+  top: 5px;
+  right: 6px;
+  width: 25px;
+  height: 2px;
+}
+.hamburger-menu .line-two {
+  top: -5px;
+  right: 6px;
+  width: 25px;
+  height: 2px;
+}
+/* animate the hamburger menu  */
+.hamburger-menu.close .line-one{
+  animation: closebtnone 0.3s forwards;
+}
+.hamburger-menu.close .line-two{
+  animation: closebtntwo 0.3s forwards;
+}
+
+@keyframes closebtnone {
+  0%{
+    top: 5px;
+    transform: rotate(0);
+  }
+  50%{
+    top: 0px;
+    transform: rotate(0);
+  }
+  100%{
+    top: 0px;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes closebtntwo {
+  0%{
+    top: -5px;
+    transform: rotate(0);
+  }
+  50%{
+    top: 0px;
+    transform: rotate(0);
+  }
+  100%{
+    top: 0px;
+    transform: rotate(-45deg);
+  }
+}
+
+.hamburger-menu.open .line-one{
+  animation: openbtnone 0.3s forwards;
+}
+.hamburger-menu.open .line-two{
+  animation: openbtntwo 0.3s forwards;
+}
+
+@keyframes openbtnone {
+  0% {
+    top: 0px;
+    transform: rotate(45deg);
+  }
+  50% {
+    top: 0px;
+    transform: rotate(0);
+  }
+  100% {
+    top: 5px;
+    transform: rotate(0);
+  }
+}
+
+@keyframes openbtntwo {
+  0% {
+    top: 0px;
+    transform: rotate(-45deg);
+  }
+  50% {
+    top: 0px;
+    transform: rotate(0);
+  }
+  100% {
+    top: -5px;
+    transform: rotate(0);
+  }
+}
+
+
+/* animate the sidebar  */
+.animated-nav-slider{
+  animation: slide-downward 0.3s linear forwards;
+}
+.animated-nav-slider-up{
+  animation: slide-upward 0.3s linear forwards; /* forwards keeps animation at it final stage, instead of it returning to its initial stage */
+}
+
+@keyframes slide-downward {
+  from{
+    top: -100px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes slide-upward {
+  from{
+    top: 0px;
+  }
+  to {
+    top: -500px;
+  }
 }
