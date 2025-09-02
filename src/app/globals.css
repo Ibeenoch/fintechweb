@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 :root {
-      /* // darkerblack #060606 lighterblack #141414 green #b0f127   */
+  /* // darkerblack #060606 lighterblack #141414 green #b0f127   */
 
   --background: #060606;
   --lighterblack: #141414;
   --greencolor: #b0f127;
-  --graybg: #939393;
+  --graybg: #2f2f2f;
   --graytext: #c0c0c0;
 }
 
- @theme {
+@theme {
   --color-brand: var(--greencolor);
   --color-lighterblack: var(--lighterblack);
   --color-background: var(--background);
   --color-greybg: var(--graybg);
   --color-greytext: var(--graytext);
-} 
+  --font-manrope: var(--font-manrope);
+}
 
 /* @theme inline {
   --color-background: var(--background);
@@ -37,17 +38,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.hamburger-menu{
+.hamburger-menu {
   position: relative;
   cursor: pointer;
-user-select: none;
-outline: none;
-z-index: 10;
+  user-select: none;
+  outline: none;
+  z-index: 10;
 }
 .hamburger-menu .line {
-position: absolute;
-border-radius: 9px;
-background-color: var(--greencolor);
+  position: absolute;
+  border-radius: 9px;
+  background-color: var(--greencolor);
 }
 
 .hamburger-menu .line-one {
@@ -63,47 +64,47 @@ background-color: var(--greencolor);
   height: 2px;
 }
 /* animate the hamburger menu  */
-.hamburger-menu.close .line-one{
+.hamburger-menu.close .line-one {
   animation: closebtnone 0.3s forwards;
 }
-.hamburger-menu.close .line-two{
+.hamburger-menu.close .line-two {
   animation: closebtntwo 0.3s forwards;
 }
 
 @keyframes closebtnone {
-  0%{
+  0% {
     top: 5px;
     transform: rotate(0);
   }
-  50%{
+  50% {
     top: 0px;
     transform: rotate(0);
   }
-  100%{
+  100% {
     top: 0px;
     transform: rotate(45deg);
   }
 }
 
 @keyframes closebtntwo {
-  0%{
+  0% {
     top: -5px;
     transform: rotate(0);
   }
-  50%{
+  50% {
     top: 0px;
     transform: rotate(0);
   }
-  100%{
+  100% {
     top: 0px;
     transform: rotate(-45deg);
   }
 }
 
-.hamburger-menu.open .line-one{
+.hamburger-menu.open .line-one {
   animation: openbtnone 0.3s forwards;
 }
-.hamburger-menu.open .line-two{
+.hamburger-menu.open .line-two {
   animation: openbtntwo 0.3s forwards;
 }
 
@@ -137,17 +138,16 @@ background-color: var(--greencolor);
   }
 }
 
-
 /* animate the sidebar  */
-.animated-nav-slider{
+.animated-nav-slider {
   animation: slide-downward 0.3s linear forwards;
 }
-.animated-nav-slider-up{
+.animated-nav-slider-up {
   animation: slide-upward 0.3s linear forwards; /* forwards keeps animation at it final stage, instead of it returning to its initial stage */
 }
 
 @keyframes slide-downward {
-  from{
+  from {
     top: -100px;
   }
   to {
@@ -156,7 +156,7 @@ background-color: var(--greencolor);
 }
 
 @keyframes slide-upward {
-  from{
+  from {
     top: 0px;
   }
   to {

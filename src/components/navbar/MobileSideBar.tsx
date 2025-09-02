@@ -2,9 +2,9 @@
 import React, { useContext } from 'react'
 import { UseMenuContext } from './MenuContext'
 import Link from 'next/link';
-import Button from '../Button';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { selectGeneral } from '@/lib/features/general/generalSlice';
+import Button from '../common/Button';
 
 export default function MobileSideBar() {
     // const { isOpen, setIsOpen } = UseMenuContext();  
@@ -26,7 +26,7 @@ console.log('isitopen ', isOpen);
        ))   
       }
       <div className='mt-5 pb-8'>
-         <Button text='Download App' textColor='text-black' fullWidth={true}/>
+         <Button text='Download app' textColor='text-black' fullWidth={true} animationType='slant'/>
       </div>
       </ul>
     </div>

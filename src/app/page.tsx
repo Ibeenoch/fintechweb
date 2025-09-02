@@ -1,9 +1,13 @@
+import HorizontalScrolling from "@/components/animation/HorizontalScrolling";
+import HeroSection from "@/components/home/HeroSection";
+import HorizontalAnimatedScroll from "@/components/home/HorizontalAnimatedScroll";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-
-    </div>
+    <main className="pt-30  min-h-screen">
+      <HeroSection />
+      <HorizontalAnimatedScroll />
+    </main>
   );
 }
