@@ -6,14 +6,70 @@ import Button from "./Button";
 interface ContentStructureProps {
   alignContent?: "left" | "center" | "right";
   showBtn?: boolean;
+  leftBtnFullWidth?: boolean;
+  rightBtnFullWidth?: boolean;
   showSubText?: boolean;
   numOfBtns?: number;
   btnTypeLeft?: "default" | "borderType";
   btnTypeRight?: "default" | "borderType";
   title: string;
-  subtitle?: string;
+  subtitle?: string | React.ReactNode;
   leftBtnText?: string;
+  extraStylesTop?: string;
   rightBtnText?: string;
+  space?: string;
+  topSpacing?: string;
+  fontWeightTop?:
+    | "slim"
+    | "thin"
+    | "normal"
+    | "medium"
+    | "semibold"
+    | "bold"
+    | "extrabold";
+  fontSizeTop?:
+    | "extra-small"
+    | "small"
+    | "normal"
+    | "medium"
+    | "large"
+    | "extraLarge"
+    | "huge"
+    | "extrahuge";
+  fontWeightBottom?:
+    | "slim"
+    | "thin"
+    | "normal"
+    | "medium"
+    | "semibold"
+    | "bold"
+    | "extrabold";
+  fontSizeBottom?:
+    | "extra-small"
+    | "small"
+    | "normal"
+    | "medium"
+    | "large"
+    | "extraLarge"
+    | "huge"
+    | "extrahuge";
+  fontWeightBtn?:
+    | "slim"
+    | "thin"
+    | "normal"
+    | "medium"
+    | "semibold"
+    | "bold"
+    | "extrabold";
+  fontSizeBtn?:
+    | "extra-small"
+    | "small"
+    | "normal"
+    | "medium"
+    | "large"
+    | "extraLarge"
+    | "huge"
+    | "extrahuge";
 }
 
 const ContentStructure: React.FC<ContentStructureProps> = ({
@@ -25,8 +81,19 @@ const ContentStructure: React.FC<ContentStructureProps> = ({
   btnTypeRight,
   rightBtnText,
   leftBtnText,
+  leftBtnFullWidth,
+  rightBtnFullWidth,
   title = "",
   subtitle = "",
+  space = "pt-8",
+  topSpacing = "mt-14 md:mt-20",
+  fontWeightBottom,
+  fontWeightTop,
+  fontWeightBtn,
+  fontSizeBottom,
+  extraStylesTop,
+  fontSizeTop,
+  fontSizeBtn,
 }) => {
   const btntypeLeft =
     btnTypeLeft === "borderType" ? (
@@ -37,18 +104,18 @@ const ContentStructure: React.FC<ContentStructureProps> = ({
         showBorder={true}
         textColor="text-white group-hover:text-black"
         animationType="slant"
-        fontSize="medium"
-        fullWidth={true}
-        fontWeight="medium"
+        fontSize={fontSizeBtn}
+        fullWidth={leftBtnFullWidth}
+        fontWeight={fontWeightBtn}
       />
     ) : btnTypeLeft === "default" ? (
       <Button
         whileHover={{ y: -5, scale: 1.04, rotate: 3 }}
         text={leftBtnText}
         animationType="slant"
-        fontSize="medium"
-        fullWidth={true}
-        fontWeight="semibold"
+        fontSize={fontSizeBtn}
+        fullWidth={leftBtnFullWidth}
+        fontWeight={fontWeightBtn}
       />
     ) : (
       <></>
@@ -61,31 +128,44 @@ const ContentStructure: React.FC<ContentStructureProps> = ({
         showBorder={true}
         textColor="text-white group-hover:text-black"
         animationType="slant"
-        fontSize="medium"
-        fontWeight="medium"
-        fullWidth={true}
+        fontSize={fontSizeBtn}
+        fontWeight={fontWeightBtn}
+        fullWidth={rightBtnFullWidth}
       />
     ) : btnTypeRight === "default" ? (
       <Button
         text={rightBtnText}
         animationType="slant"
-        fontSize="medium"
-        fontWeight="semibold"
-        fullWidth={true}
+        fontSize={fontSizeBtn}
+        fontWeight={fontWeightBtn}
+        fullWidth={rightBtnFullWidth}
       />
     ) : (
       <></>
     );
   return (
-    <div className={`font-manrope text-center mt-14 sm:mt-20`}>
-      <Text text={title} fontSize="huge" fontWeight="semibold" extraStyles="" />
+    <article
+      className={`font-manrope ${
+        alignContent === "center"
+          ? "text-center"
+          : alignContent === "left"
+          ? `text-justify`
+          : `text-right`
+      } ${topSpacing}`}
+    >
+      <Text
+        text={title}
+        fontSize={fontSizeTop}
+        fontWeight={fontWeightTop}
+        extraStyles={extraStylesTop}
+      />
       {showSubText && (
         <Text
           text={subtitle}
           textColor="text-greytext"
-          fontSize="normal"
-          fontWeight="medium"
-          extraStyles="pt-8"
+          fontSize={fontSizeBottom}
+          fontWeight={fontWeightBottom}
+          extraStyles={`${space}`}
         />
       )}
       {showBtn && (
@@ -93,13 +173,15 @@ const ContentStructure: React.FC<ContentStructureProps> = ({
           {numOfBtns === 1 ? (
             <>
               {/* if 1 btn show the two base on the one selected by the user  */}
-              <div className="pt-8 flex justify-center items-center gap-6 pb-8">
+              <div className={`${space} pb-8`}>
                 {leftBtnText && btntypeLeft}{" "}
               </div>
             </>
           ) : numOfBtns === 2 ? (
             <>
-              <div className="pt-8 block px-5 sm:flex sm:px-0  w-full sm:flex-row justify-center items-center gap-6 pb-8">
+              <div
+                className={`${space} flex flex-col md:flex-row gap-2 md:gap-4 pb-8`}
+              >
                 {/* if 2 btn show the two base on the one selected by the user  */}
                 {leftBtnText && btntypeLeft} {rightBtnText && btntypeRight}
               </div>
@@ -109,7 +191,7 @@ const ContentStructure: React.FC<ContentStructureProps> = ({
           )}
         </div>
       )}
-    </div>
+    </article>
   );
 };
 

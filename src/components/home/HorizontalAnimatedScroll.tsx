@@ -8,6 +8,9 @@ let imagesOne = [
   "/images/horizon-scroll-top-3.png",
   "/images/horizon-scroll-top-2.png",
   "/images/horizon-scroll-top-1.png",
+
+  "/images/horizon-scroll-bottom-3.png",
+  "/images/horizon-scroll-bottom-4.png",
 ];
 
 let imagesTwo = [
@@ -16,6 +19,9 @@ let imagesTwo = [
   "/images/horizon-scroll-bottom-3.png",
   "/images/horizon-scroll-bottom-4.png",
   "/images/horizon-scroll-bottom-5.png",
+
+  "/images/horizon-scroll-top-3.png",
+  "/images/horizon-scroll-top-2.png",
 ];
 
 const HorizontalAnimatedScroll = () => {

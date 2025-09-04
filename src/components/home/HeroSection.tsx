@@ -9,6 +9,9 @@ const HeroSection = () => {
     <AnimateOnView>
       <ContentStructure
         title="Finantech X Webflow Template"
+        fontSizeTop="extrahuge"
+        fontWeightTop="medium"
+        fontWeightBtn="semibold"
         showSubText={true}
         subtitle="Presenting Finantech X, the ultimate Crypto Webflow Template"
         leftBtnText="Buy template"

@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
+import Images from "../common/Images";
 
 interface HorizontalScrollingProps {
   imagesOne: string[];
@@ -20,44 +20,27 @@ const HorizontalScrolling: React.FC<HorizontalScrollingProps> = ({
   });
 
   // map vertical scroll (0 -> 1) into horizontal  translation ( 0 -> -200px)
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   // map vertical scroll (0 -> 1) into horizontal  translation ( 0 -> -200px)
-  const xTop = useTransform(scrollYProgress, [0, 1], ["-30%", "0%"]);
+  const xTop = useTransform(scrollYProgress, [0, 1], ["-95%", "1%"]);
 
   return (
-    <div
-      ref={ref}
-      className="h-[150vh] md:h-[200vh] flex flex-col z-0 bg-greybg gap-6 items-center justify-center overflow-hidden"
-    >
-      {/* top  */}
-      <motion.div style={{ x: xTop }} className="flex spaces-x-6 gap-4 ">
-        {imagesTwo.map((img, i) => (
-          <Image
-            key={i}
-            src={img}
-            alt={img}
-            width={600}
-            height={550}
-            sizes="(max-width: 479px) 178px, (max-width: 767px) 207px, (max-width: 991px) 258px, (max-width: 1919px) 398px, 558px"
-            className=" object-contain bg-background rounded"
-          />
-        ))}
-      </motion.div>
+    <div ref={ref} className="relative h-[500vh] bg-greybg py-14">
+      <div className="sticky top-0 flex h-screen flex-col justify-center gap-12 overflow-hidden">
+        {/* top  */}
+        <motion.div style={{ x: xTop }} className="flex spaces-x-6 gap-4 ">
+          {imagesTwo.map((img, i) => (
+            <Images key={i} img={img} />
+          ))}
+        </motion.div>
 
-      <motion.div style={{ x }} className="flex spaces-x-6 gap-4">
-        {imagesOne.map((img, i) => (
-          <Image
-            key={i}
-            src={img}
-            alt={img}
-            width={600}
-            height={550}
-            sizes="(max-width: 479px) 178px, (max-width: 767px) 207px, (max-width: 991px) 258px, (max-width: 1919px) 398px, 558px"
-            className=" object-contain bg-background rounded"
-          />
-        ))}
-      </motion.div>
+        <motion.div style={{ x }} className="flex spaces-x-6 gap-4">
+          {imagesOne.map((img, i) => (
+            <Images key={i} img={img} />
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };

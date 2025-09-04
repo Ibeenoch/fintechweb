@@ -95,10 +95,10 @@ export default function Button({
           ${showBorder ? `border ${borderProps} hover:border-brand` : ``}
           ${
             backgroundColor ? backgroundColor : `bg-brand`
-          } px-[30px] py-[12px] tracking-wide md:py-[18px] text-xs sm:text-md inline-block 
+          } px-[30px] py-[12px] tracking-wide md:py-[20px] md:px-[38px] text-xs sm:text-md inline-block 
           ${fontWeight ?? ""} 
           ${textColor ?? ""} 
-          ${fullWidth ? "w-full text-center" : ""}
+          ${fullWidth ? "w-full md:w-auto text-center" : ""}
           `}
         >
           {textContent}
@@ -114,7 +114,7 @@ export default function Button({
             rounded-4xl px-[30px] py-[12px] md:py-[18px] text-sm sm:text-md inline-block 
             ${fontWeight ?? ""} 
             ${textColor ?? ""} 
-            ${fullWidth ? "w-full text-center" : ""}
+            ${fullWidth ? "w-full  md:w-auto text-center" : ""}
           `}
           >
             {textContent}

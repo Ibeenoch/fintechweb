@@ -8,13 +8,12 @@ import MobileSideBar from "./MobileSideBar";
 import Button from "../common/Button";
 
 export default function NavBar() {
-  // darkerblack #060606 lighterblack #141414 green #b0f127
   const links = ["Home", "About", "Blog", "Contact", "Cart"];
 
   return (
-    <header className=" fixed w-full z-40">
-      <nav className="bg-lighterblack">
-        <div className="p-5 md:p-8 flex justify-between bg-lighterblack items-center z-40">
+    <header className="fixed w-full z-40">
+      <nav className="bg-lighterblack/40 backdrop-blur-md">
+        <div className="p-5 md:p-6 flex justify-between  items-center z-40">
           <BrandLogo />
           <ul className="flex gap-2 md:gap-6 items-center">
             {links.map((link, i) => (

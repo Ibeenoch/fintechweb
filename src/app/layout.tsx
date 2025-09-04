@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-})
+});
 
 export const metadata: Metadata = {
   title: "Cryptron App",
@@ -31,14 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${manrope.variable} antialiased`}
-      >
-        
+      <body className={`${manrope.variable} antialiased `}>
         <StoreProvider>
           <NavBar />
           {children}
-          </StoreProvider> 
+        </StoreProvider>
       </body>
     </html>
   );

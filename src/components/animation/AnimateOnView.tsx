@@ -5,23 +5,38 @@ import { easeInOut, motion } from "framer-motion";
 interface AnimatedProps {
   children: React.ReactNode;
   scrollVertical?: boolean;
-  scrollHorizontal?: boolean;
+  scrollHorizontalLeft?: boolean;
+  scrollHorizontalRight?: boolean;
 }
 const AnimateOnView = ({
   children,
-  scrollHorizontal = false,
+  scrollHorizontalRight = false,
+  scrollHorizontalLeft = false,
   scrollVertical = true,
 }: AnimatedProps) => {
   return (
     <motion.div
+      className="overflow-x-hidden"
       initial={{
         opacity: 0,
-        y: scrollVertical ? 50 : 0,
-        x: scrollHorizontal ? 50 : 0,
+        y: scrollHorizontalRight
+          ? 0
+          : scrollHorizontalLeft
+          ? 0
+          : scrollVertical
+          ? 100
+          : 0,
+        x: scrollVertical
+          ? 0
+          : scrollHorizontalRight
+          ? 100
+          : scrollHorizontalLeft
+          ? -100
+          : 0,
       }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
       transition={{ duration: 0.5, ease: easeInOut }}
-      viewport={{ once: false, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.25 }}
     >
       {children}
     </motion.div>
